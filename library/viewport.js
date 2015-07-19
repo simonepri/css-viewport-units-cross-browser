@@ -41,7 +41,8 @@ $(window).ready(function() {
         window.vh_margin_top = $("[vh-margin-top]");
         window.vh_margin_right = $("[vh-margin-right]");
         window.vh_margin_bottom = $("[vh-margin-bottom]");
-        window.vh_margin_leftborder_width = $("[vh-margin-leftborder-width]");
+        window.vh_margin_left = $("[vh-margin-left]");
+        window.vh_border_width = $("[vh-border-width]");
         window.vh_border_top_width = $("[vh-border-top-width]");
         window.vh_border_right_width = $("[vh-border-right-width]");
         window.vh_border_bottom_width = $("[vh-border-bottom-width]");
@@ -71,7 +72,8 @@ $(window).ready(function() {
         window.vw_margin_top = $("[vw-margin-top]");
         window.vw_margin_right = $("[vw-margin-right]");
         window.vw_margin_bottom = $("[vw-margin-bottom]");
-        window.vw_margin_leftborder_width = $("[vw-margin-leftborder-width]");
+        window.vw_margin_left = $("[vw-margin-left]");
+        window.vw_border_width = $("[vw-border-width]");
         window.vw_border_top_width = $("[vw-border-top-width]");
         window.vw_border_right_width = $("[vw-border-right-width]");
         window.vw_border_bottom_width = $("[vw-border-bottom-width]");
@@ -101,7 +103,8 @@ $(window).ready(function() {
         window.vmin_margin_top = $("[vmin-margin-top]");
         window.vmin_margin_right = $("[vmin-margin-right]");
         window.vmin_margin_bottom = $("[vmin-margin-bottom]");
-        window.vmin_margin_leftborder_width = $("[vmin-margin-leftborder-width]");
+        window.vmin_margin_left = $("[vmin-margin-left]");
+        window.vmin_border_width = $("[vmin-border-width]");
         window.vmin_border_top_width = $("[vmin-border-top-width]");
         window.vmin_border_right_width = $("[vmin-border-right-width]");
         window.vmin_border_bottom_width = $("[vmin-border-bottom-width]");
@@ -131,7 +134,8 @@ $(window).ready(function() {
         window.vmax_margin_top = $("[vmax-margin-top]");
         window.vmax_margin_right = $("[vmax-margin-right]");
         window.vmax_margin_bottom = $("[vmax-margin-bottom]");
-        window.vmax_margin_leftborder_width = $("[vmax-margin-leftborder-width]");
+        window.vmax_margin_left = $("[vmax-margin-left]");
+        window.vmax_border_width = $("[vmax-border-width]");
         window.vmax_border_top_width = $("[vmax-border-top-width]");
         window.vmax_border_right_width = $("[vmax-border-right-width]");
         window.vmax_border_bottom_width = $("[vmax-border-bottom-width]");
@@ -163,7 +167,8 @@ $(window).ready(function() {
         window.vh_margin_top.each(function() {$(this).css("margin-top", $(this).attr("vh-margin-top") * vh_value);});
         window.vh_margin_right.each(function() {$(this).css("margin-right", $(this).attr("vh-margin-right") * vh_value);});
         window.vh_margin_bottom.each(function() {$(this).css("margin-bottom", $(this).attr("vh-margin-bottom") * vh_value);});
-        window.vh_margin_leftborder_width.each(function() {$(this).css("margin-leftborder-width", $(this).attr("vh-margin-leftborder-width") * vh_value);});
+        window.vh_margin_left.each(function() {$(this).css("margin-left", $(this).attr("vh-margin-left") * vh_value);});
+        window.vh_border_width.each(function() {$(this).css("border-width", $(this).attr("vh-border-width") * vh_value);});
         window.vh_border_top_width.each(function() {$(this).css("border-top-width", $(this).attr("vh-border-top-width") * vh_value);});
         window.vh_border_right_width.each(function() {$(this).css("border-right-width", $(this).attr("vh-border-right-width") * vh_value);});
         window.vh_border_bottom_width.each(function() {$(this).css("border-bottom-width", $(this).attr("vh-border-bottom-width") * vh_value);});
@@ -190,7 +195,8 @@ $(window).ready(function() {
         window.vw_margin_top.each(function() {$(this).css("margin-top", $(this).attr("vw-margin-top") * vw_value);});
         window.vw_margin_right.each(function() {$(this).css("margin-right", $(this).attr("vw-margin-right") * vw_value);});
         window.vw_margin_bottom.each(function() {$(this).css("margin-bottom", $(this).attr("vw-margin-bottom") * vw_value);});
-        window.vw_margin_leftborder_width.each(function() {$(this).css("margin-leftborder-width", $(this).attr("vw-margin-leftborder-width") * vw_value);});
+        window.vw_margin_left.each(function() {$(this).css("margin-left", $(this).attr("vw-margin-left") * vw_value);});
+        window.vw_border_width.each(function() {$(this).css("border-width", $(this).attr("vw-border-width") * vw_value);});
         window.vw_border_top_width.each(function() {$(this).css("border-top-width", $(this).attr("vw-border-top-width") * vw_value);});
         window.vw_border_right_width.each(function() {$(this).css("border-right-width", $(this).attr("vw-border-right-width") * vw_value);});
         window.vw_border_bottom_width.each(function() {$(this).css("border-bottom-width", $(this).attr("vw-border-bottom-width") * vw_value);});
@@ -217,7 +223,8 @@ $(window).ready(function() {
         window.vmin_margin_top.each(function() {$(this).css("margin-top", $(this).attr("vmin-margin-top") * vmin_value);});
         window.vmin_margin_right.each(function() {$(this).css("margin-right", $(this).attr("vmin-margin-right") * vmin_value);});
         window.vmin_margin_bottom.each(function() {$(this).css("margin-bottom", $(this).attr("vmin-margin-bottom") * vmin_value);});
-        window.vmin_margin_leftborder_width.each(function() {$(this).css("margin-leftborder-width", $(this).attr("vmin-margin-leftborder-width") * vmin_value);});
+        window.vmin_margin_left.each(function() {$(this).css("margin-left", $(this).attr("vmin-margin-left") * vmin_value);});
+        window.vmin_border_width.each(function() {$(this).css("border-width", $(this).attr("vmin-border-width") * vmin_value);});
         window.vmin_border_top_width.each(function() {$(this).css("border-top-width", $(this).attr("vmin-border-top-width") * vmin_value);});
         window.vmin_border_right_width.each(function() {$(this).css("border-right-width", $(this).attr("vmin-border-right-width") * vmin_value);});
         window.vmin_border_bottom_width.each(function() {$(this).css("border-bottom-width", $(this).attr("vmin-border-bottom-width") * vmin_value);});
@@ -244,7 +251,8 @@ $(window).ready(function() {
         window.vmax_margin_top.each(function() {$(this).css("margin-top", $(this).attr("vmax-margin-top") * vmax_value);});
         window.vmax_margin_right.each(function() {$(this).css("margin-right", $(this).attr("vmax-margin-right") * vmax_value);});
         window.vmax_margin_bottom.each(function() {$(this).css("margin-bottom", $(this).attr("vmax-margin-bottom") * vmax_value);});
-        window.vmax_margin_leftborder_width.each(function() {$(this).css("margin-leftborder-width", $(this).attr("vmax-margin-leftborder-width") * vmax_value);});
+        window.vmax_margin_left.each(function() {$(this).css("margin-left", $(this).attr("vmax-margin-left") * vmax_value);});
+        window.vmax_border_width.each(function() {$(this).css("border-width", $(this).attr("vmax-border-width") * vmax_value);});
         window.vmax_border_top_width.each(function() {$(this).css("border-top-width", $(this).attr("vmax-border-top-width") * vmax_value);});
         window.vmax_border_right_width.each(function() {$(this).css("border-right-width", $(this).attr("vmax-border-right-width") * vmax_value);});
         window.vmax_border_bottom_width.each(function() {$(this).css("border-bottom-width", $(this).attr("vmax-border-bottom-width") * vmax_value);});
