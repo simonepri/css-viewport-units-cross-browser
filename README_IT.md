@@ -17,7 +17,7 @@ Esempio:
 	Questo div riempie lo schermo sia in larghezza che in altezza
 </div>
 ```	
-Per fare ciò la libreria usa il ``supporto nativo`` delle ``viewport unit`` quando il browser lo permette, mentre quando non disponibili utilizza JavaScript per adattare l'unità di misura alla pagina.
+Per fare ciò la libreria usa il ``supporto nativo`` delle ``viewport unit`` quando il browser lo permette, mentre quando non disponibili utilizza ``JavaScript`` per adattare l'unità di misura alla pagina.
 Per motivi di tempo, il codice ``JavaScript`` della libreria utilizza alcune ``API`` della libreria ``jQuery`` (Qualsiasi versione di ``jQuery`` è supportata).
 
 ``Quando e se avrò tempo, scriverò una versione della libreria in JavaScript puro.``
