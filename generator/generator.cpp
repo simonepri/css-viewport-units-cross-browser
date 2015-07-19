@@ -181,7 +181,7 @@ int main() {
   tobeprinted += "      html.css('overflow', 'visible');\n";
   tobeprinted += "    }\n";
 
-  tobeprinted += "    viewport_init()\n    viewport_exec();\n    $(window).resize(function() { viewport_exec(); });\n  });\n\n";
+  tobeprinted += "    viewport_init();\n    viewport_exec();\n    $(window).resize(function() { viewport_exec(); });\n  });\n\n";
   tobeprinted += "})(jQuery);";
 
   fout.open(FILENAME+".js");
