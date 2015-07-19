@@ -74,7 +74,7 @@ string noDash(string& str) {
   return str;
 }
 
-string doMinify(string& str) {
+string doMinify(string& str, bool isjs = false) {
   replaceAll(str,string("\n"), string(""));
   replaceAll(str,string("  "), string(""));
   replaceAll(str,string(" = "), string("="));
@@ -98,8 +98,8 @@ string doMinify(string& str) {
   replaceAll(str,string("} "), string("}"));
   replaceAll(str,string(" {"), string("{"));
   replaceAll(str,string(" } "), string("}"));
-  replaceAll(str,string(".css"), string(".min.css"));
-  replaceAll(str,string(".js"), string(".min.js"));
+  if(!isjs) replaceAll(str,string(".css"), string(".min.css"));
+  else replaceAll(str,string(".js"), string(".min.js"));
   return str;
 }
 
@@ -128,7 +128,7 @@ int main() {
   fout<<tobeprinted;
   fout.close();
   fout.open(FILENAME+".min.css");
-  fout<<doMinify(tobeprinted);
+  fout<<doMinify(tobeprinted, false);
   fout.close();
   /* CSS GENERATOR - END */
 
@@ -188,7 +188,7 @@ int main() {
   fout<<tobeprinted;
   fout.close();
   fout.open(FILENAME+".min.js");
-  fout<<doMinify(tobeprinted);
+  fout<<doMinify(tobeprinted, true);
   fout.close();
   /* JS GENERATOR - END */
   return 0;
