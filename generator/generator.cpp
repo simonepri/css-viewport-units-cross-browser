@@ -69,7 +69,7 @@ void replaceAll(string& source, const string& from, const string& to) {
   source.swap( newString );
 }
 
-string noDash(string& str) {
+string noDash(string str) {
   replaceAll(str,string("-"),string("_"));
   return str;
 }
