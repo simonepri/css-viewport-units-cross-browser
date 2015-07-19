@@ -157,6 +157,7 @@ int main() {
     tobeprinted += "      var " + viewtype[i] + "_test = " + "$(\"<div class='" + viewtype[i] + "-test'></div>\").appendTo(html);\n";
     tobeprinted += "      var " + viewtype[i] + "_calc = (" + viewtype[i] + "_test).height() - " + function[i] + ";\n";
     tobeprinted += "      " + viewtype[i] + "_" + "need = (" + viewtype[i] + "_calc >= -1 && " + viewtype[i] + "_calc <= 1) ? false : true;\n";
+    tobeprinted += "      " + viewtype[i] + "_test.remove();\n";
     //tobeprinted += "      console.log(" + viewtype[i] + "_calc + ' ' + (" + viewtype[i] + "_test).height() + ' ' + " + function[i] + ");\n";
     tobeprinted += "      if(" + viewtype[i] + "_" + "need == true) {\n";
     for(int j = 0; j < property.size(); j++) {
