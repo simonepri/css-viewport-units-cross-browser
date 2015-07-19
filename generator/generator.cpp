@@ -42,7 +42,7 @@ vector<string> property = {
   "font-size","line-height","letter-spacing","text-indent",
   "top","right","bottom","left",
   "padding","padding-top","padding-right","padding-bottom","padding-left",
-  "margin","margin-top","margin-right", "margin-bottom","margin-left"
+  "margin","margin-top","margin-right", "margin-bottom","margin-left",
   "border-width","border-top-width","border-right-width","border-bottom-width","border-left-width",
 };
 
