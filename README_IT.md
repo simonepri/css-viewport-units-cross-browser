@@ -8,7 +8,7 @@ Per fare ciò semplicemente basta aggiungere al div interessato il seguente attr
 
 Dove: 
   * ``A`` può essere una delle quattro viewport unit. ``(vh | vw | vmin | vmax)``
-  * ``B`` può essere una qualsiasi proprietà del ``CSS3`` supportata``.(height | width | font-size | padding | ecc...)``
+  * ``B`` può essere una qualsiasi proprietà del ``CSS3`` supportata. ``(height | width | font-size | padding | ecc...)``
   * ``X`` può essere un valore numerico qualsiasi che indica la percentuale rispetto all'unità sopra indicata. ``(10 | 20 | 50 | 100 | ecc...)``
 
 Esempio:
@@ -17,10 +17,10 @@ Esempio:
 	Questo div riempie lo schermo sia in larghezza che in altezza
 </div>
 ```	
-Per fare ciò la libreria usa il ``supporto nativo`` delle ``viewport unit`` quando il browser lo permette, mentre quando non disponibili utilizza javascript per adattare l'unità di misura alla pagina.
-Per motivi di tempo il codice ``javascript`` della libreria utilizza alcune ``API`` della libreria ``jQuery`` (Qualsiasi versione di ``jQuery`` è supportata).
+Per fare ciò la libreria usa il ``supporto nativo`` delle ``viewport unit`` quando il browser lo permette, mentre quando non disponibili utilizza JavaScript per adattare l'unità di misura alla pagina.
+Per motivi di tempo, il codice ``JavaScript`` della libreria utilizza alcune ``API`` della libreria ``jQuery`` (Qualsiasi versione di ``jQuery`` è supportata).
 
-``Quando e se avrò tempo scriverò una versione della libreria in javascript puro.``
+``Quando e se avrò tempo, scriverò una versione della libreria in JavaScript puro.``
 
 ## PERSONALIZZAZIONE
 Siccome le proprietà che supportano le ``viewport unit`` sono relativamente molte ho creato un programma in ``C++11`` che permette di selezionare le proprietà e le unità che servono al vostro progetto per creare una versione della libreria ``ad-hoc`` più leggera.
