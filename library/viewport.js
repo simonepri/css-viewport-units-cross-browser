@@ -1,9 +1,9 @@
 /*!
-* Viewport v1.0.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
+* Viewport v1.1.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
 * Copyright 2015 Simone Primarosa. (https://github.com/simone97/)
 * Licensed under GNU General Public License version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
 */
-/*! viewport.js v1.0.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/library/viewport.js */
+/*! viewport.js v1.1.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/library/viewport.js */
 
 (function($) {
 "use strict";
@@ -15,7 +15,17 @@ $(window).ready(function() {
     var vmax_need = false;
 
     function viewport_init() {
+      var deviceAgent = navigator.userAgent.toLowerCase();
+      var oldIOS = (/ip(ad|hone|od).*os 3_/.test(deviceAgent) || /ip(ad|hone|od).*os 4_/.test(deviceAgent) || /ip(ad|hone|od).*os 5_/.test(deviceAgent) || /ip(ad|hone|od).*os 6_/.test(deviceAgent) || /ip(ad|hone|od).*os 7_/.test(deviceAgent));
+      if(oldIOS) {
+        vh_need = true;
+        vw_need = true;
+        vmin_need = true;
+        vmax_need = true;
+        return;
+      }
       var html = $("html");
+      html.removeClass("no-vu");
       html.css('overflow', 'hidden');
       var vh_test = $("<div class='vh-test'></div>").appendTo(html);
       var vh_calc = (vh_test).height() - $(window).height();
