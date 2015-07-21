@@ -188,6 +188,8 @@ int main() {
   tobeprinted += "\n";
 
   tobeprinted += "    function viewport_init() {\n";
+  tobeprinted += "      var html = $(\"html\");\n";
+  tobeprinted += "      html.removeClass(\"no-viewport\");\n";
   tobeprinted += "      var deviceAgent = navigator.userAgent.toLowerCase();\n";
   tobeprinted += "      var oldIOS = (/ip(ad|hone|od).*os 3_/.test(deviceAgent) || /ip(ad|hone|od).*os 4_/.test(deviceAgent) || /ip(ad|hone|od).*os 5_/.test(deviceAgent) || /ip(ad|hone|od).*os 6_/.test(deviceAgent) || /ip(ad|hone|od).*os 7_/.test(deviceAgent));\n";
   tobeprinted += "      if(oldIOS) {\n";
@@ -196,8 +198,6 @@ int main() {
   }
 	tobeprinted += "        return;\n";
 	tobeprinted += "      }\n";
-  tobeprinted += "      var html = $(\"html\");\n";
-  tobeprinted += "      html.removeClass(\"no-viewport\");\n";
   tobeprinted += "      html.addClass(\"vu-overflow\");\n";
   for(int i = 0; i < viewtype.size(); i++) {
     tobeprinted += "      var " + viewtype[i] + "_test = " + "$(\"<div class='" + viewtype[i] + "-test'></div>\").appendTo(html);\n";
