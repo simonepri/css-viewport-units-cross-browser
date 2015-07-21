@@ -3,7 +3,7 @@
 ** Copyright 2015 Simone Primarosa. (https://github.com/simone97/)
 * Licensed under GNU General Public License version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
 */
-/*! viewport-generator.cpp v1.0.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/generator/viewport-generator.cpp */
+/*! viewport-generator.cpp v1.1.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/generator/viewport-generator.cpp */
 
 #include <fstream>
 #include <string>
@@ -138,7 +138,8 @@ int main() {
   tobeprinted += "/*! " + FILENAME + ".css v" + VERSION + " | GNU GPL | " + FOLDER + FILENAME + ".css */\n\n";
 
   tobeprinted += ".vh-test, .vw-test, .vmin-test, .vmax-test {position:fixed;z-index:-999999;height:1px; width:1px; overflow:hidden;}\n";
-  tobeprinted += ".vh-test {height: 100vh;} .vw-test {height: 100vw;} .vmin-test {height: 100vmin;} .vmax-test {height: 100vmax;}\n\n";
+  tobeprinted += ".vh-test {height: 100vh;} .vw-test {height: 100vw;} .vmin-test {height: 100vmin;} .vmax-test {height: 100vmax;}\n";
+  tobeprinted += ".vu-oveflow {overflow: hidden !important;}\n\n";
 
   for(vector<string>::iterator vt = viewtype.begin(); vt != viewtype.end(); vt++) {
 		for(vector<string>::iterator pr = property.begin(); pr != property.end(); pr++) {
@@ -154,7 +155,7 @@ int main() {
 			else tobeprinted += "@media " + media[v] + to_str(k) + "px), " + media[v+2] + to_str(k) + "px) {\n";
 			for(vector<string>::iterator pr = property.begin(); pr != property.end(); pr++) {
 			  for(int i = 0; i < list_name.size(); i++) {
-				  tobeprinted += "  .no-vu [" + viewtype[v] + "-" + *pr + " = \"" + list_name[i] + "\"] {" + *pr + ":" + to_str(list_value[i]*(k*2/100.0)) + "px;}\n";
+				  tobeprinted += "  .no-viewport [" + viewtype[v] + "-" + *pr + " = \"" + list_name[i] + "\"] {" + *pr + ":" + to_str(list_value[i]*(k*2/100.0)) + "px;}\n";
 				}
 			}
 			tobeprinted += "}\n";
@@ -196,8 +197,8 @@ int main() {
 	tobeprinted += "        return;\n";
 	tobeprinted += "      }\n";
   tobeprinted += "      var html = $(\"html\");\n";
-  tobeprinted += "      html.removeClass(\"no-vu\");\n";
-  tobeprinted += "      html.css('overflow', 'hidden');\n";
+  tobeprinted += "      html.removeClass(\"no-viewport\");\n";
+  tobeprinted += "      html.addClass(\"vu-overflow\");\n";
   for(int i = 0; i < viewtype.size(); i++) {
     tobeprinted += "      var " + viewtype[i] + "_test = " + "$(\"<div class='" + viewtype[i] + "-test'></div>\").appendTo(html);\n";
     tobeprinted += "      var " + viewtype[i] + "_calc = (" + viewtype[i] + "_test).height() - " + functions[i] + ";\n";
@@ -210,12 +211,12 @@ int main() {
     }
     tobeprinted += "      }\n";
   }
-  tobeprinted += "      html.css('overflow', 'visible');\n";
+  tobeprinted += "      html.removeClass(\"vu-overflow\");\n";
   tobeprinted += "    }\n";
 
   tobeprinted += "    function viewport_exec() {\n";
   tobeprinted += "      var html = $(\"html\");\n";
-  tobeprinted += "      html.css('overflow', 'hidden');\n";
+  tobeprinted += "      html.addClass(\"vu-overflow\");\n";
   for(int i = 0; i < viewtype.size(); i++) {
     tobeprinted += "      if(" + viewtype[i] + "_" + "need == true) {\n";
     tobeprinted += "        var " + viewtype[i] + "_value = " + functions[i] + "/100;\n";
@@ -224,7 +225,7 @@ int main() {
     }
     tobeprinted += "      }\n";
   }
-  tobeprinted += "      html.css('overflow', 'visible');\n";
+  tobeprinted += "      html.removeClass(\"vu-overflow\");\n";
   tobeprinted += "    }\n";
 
   tobeprinted += "    viewport_init();\n    viewport_exec();\n    $(window).resize(function() { viewport_exec(); });\n  });\n\n";
