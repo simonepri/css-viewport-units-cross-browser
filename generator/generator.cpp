@@ -1,5 +1,5 @@
 /*!
-* Viewport v1.0.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
+* Viewport v1.1.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
 ** Copyright 2015 Simone Primarosa. (https://github.com/simone97/)
 * Licensed under GNU General Public License version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
 */
@@ -17,10 +17,25 @@ const string PROFILE = "https://github.com/simone97/";
 const string REPO = PROFILE + "css-viewport-units-cross-browser/";
 const string FOLDER = REPO + "library/";
 const string FILENAME = "viewport";
-const string VERSION = "1.0.0";
+const string VERSION = "1.1.0";
 
-const float PRECISION = 10;
-const float MAX = 100;
+vector<string> list_name = {
+  "25",
+  "33",
+  "50",
+  "75",
+  "77",
+  "100",
+};
+
+vector<double> list_value = {
+  25,
+  33.333333333333,
+  50,
+  75,
+  77.777777777777,
+  100,
+};
 
 vector<string> viewtype = {
   "vh",
@@ -29,11 +44,20 @@ vector<string> viewtype = {
   "vmax"
 };
 
-vector<string> function = {
+vector<string> functions = {
   "$(window).height()",
   "$(window).width()",
   "Math.min($(window).height(), $(window).width())",
   "Math.max($(window).height(), $(window).width())"
+};
+
+vector<string> media = {
+  "(min-height:",
+  "(min-width:",
+  "(orientation:landscape) and (min-height:",
+  "(orientation:landscape) and (min-width:",
+	"(orientation:portrait) and (min-width:",
+  "(orientation:portrait) and (min-height:",
 };
 
 vector<string> property = {
@@ -116,14 +140,26 @@ int main() {
   tobeprinted += ".vh-test, .vw-test, .vmin-test, .vmax-test {position:fixed;z-index:-999999;height:1px; width:1px; overflow:hidden;}\n";
   tobeprinted += ".vh-test {height: 100vh;} .vw-test {height: 100vw;} .vmin-test {height: 100vmin;} .vmax-test {height: 100vmax;}\n\n";
 
-  for(vector<string>::iterator pr = property.begin(); pr != property.end(); pr++) {
-    for(vector<string>::iterator vt = viewtype.begin(); vt != viewtype.end(); vt++) {
-      for(float i = PRECISION; i <= MAX; i += PRECISION) {
-        tobeprinted += "[" + *vt + "-" + *pr + " = \"" + to_str(i) + "\"] { " + *pr + ":" + to_str(i) + *vt + "; }";
+  for(vector<string>::iterator vt = viewtype.begin(); vt != viewtype.end(); vt++) {
+		for(vector<string>::iterator pr = property.begin(); pr != property.end(); pr++) {
+			for(int i = 0; i < list_name.size(); i++) {
+        tobeprinted += "[" + *vt + "-" + *pr + " = \"" + list_name[i] + "\"] {" + *pr + ":" + to_str(list_value[i]) + *vt + ";}\n";
       }
-      tobeprinted += "\n";
     }
+    tobeprinted += "\n";
   }
+  for(int v = 0; v < viewtype.size(); v++) {
+	  for(int k = 128; k <= 2560; k *= 2) {
+			if(v < 2) tobeprinted += "@media " + media[v] + to_str(k) + "px) {\n";
+			else tobeprinted += "@media " + media[v] + to_str(k) + "px), " + media[v+2] + to_str(k) + "px) {\n";
+			for(vector<string>::iterator pr = property.begin(); pr != property.end(); pr++) {
+			  for(int i = 0; i < list_name.size(); i++) {
+				  tobeprinted += "  .no-vu [" + viewtype[v] + "-" + *pr + " = \"" + list_name[i] + "\"] {" + *pr + ":" + to_str(list_value[i]*(k*2/100.0)) + "px;}\n";
+				}
+			}
+			tobeprinted += "}\n";
+		}
+	}
   fout.open(FILENAME+".css");
   fout<<tobeprinted;
   fout.close();
@@ -151,11 +187,20 @@ int main() {
   tobeprinted += "\n";
 
   tobeprinted += "    function viewport_init() {\n";
+  tobeprinted += "      var deviceAgent = navigator.userAgent.toLowerCase();\n";
+  tobeprinted += "      var oldIOS = (/ip(ad|hone|od).*os 3_/.test(deviceAgent) || /ip(ad|hone|od).*os 4_/.test(deviceAgent) || /ip(ad|hone|od).*os 5_/.test(deviceAgent) || /ip(ad|hone|od).*os 6_/.test(deviceAgent) || /ip(ad|hone|od).*os 7_/.test(deviceAgent));\n";
+  tobeprinted += "      if(oldIOS) {\n";
+	for(vector<string>::iterator vt = viewtype.begin(); vt != viewtype.end(); vt++) {
+    tobeprinted += "        " + *vt + "_" + "need = true;\n";
+  }
+	tobeprinted += "        return;\n";
+	tobeprinted += "      }\n";
   tobeprinted += "      var html = $(\"html\");\n";
+  tobeprinted += "      html.removeClass(\"no-vu\");\n";
   tobeprinted += "      html.css('overflow', 'hidden');\n";
   for(int i = 0; i < viewtype.size(); i++) {
     tobeprinted += "      var " + viewtype[i] + "_test = " + "$(\"<div class='" + viewtype[i] + "-test'></div>\").appendTo(html);\n";
-    tobeprinted += "      var " + viewtype[i] + "_calc = (" + viewtype[i] + "_test).height() - " + function[i] + ";\n";
+    tobeprinted += "      var " + viewtype[i] + "_calc = (" + viewtype[i] + "_test).height() - " + functions[i] + ";\n";
     tobeprinted += "      " + viewtype[i] + "_" + "need = (" + viewtype[i] + "_calc >= -1 && " + viewtype[i] + "_calc <= 1) ? false : true;\n";
     tobeprinted += "      " + viewtype[i] + "_test.remove();\n";
     //tobeprinted += "      console.log(" + viewtype[i] + "_calc + ' ' + (" + viewtype[i] + "_test).height() + ' ' + " + function[i] + ");\n";
@@ -173,7 +218,7 @@ int main() {
   tobeprinted += "      html.css('overflow', 'hidden');\n";
   for(int i = 0; i < viewtype.size(); i++) {
     tobeprinted += "      if(" + viewtype[i] + "_" + "need == true) {\n";
-    tobeprinted += "        var " + viewtype[i] + "_value = " + function[i] + "/100;\n";
+    tobeprinted += "        var " + viewtype[i] + "_value = " + functions[i] + "/100;\n";
     for(int j = 0; j < property.size(); j++) {
       tobeprinted += "        window." + viewtype[i] + "_" + noDash(property[j]) + ".each(function() {$(this).css(\"" + property[j] + "\", " + "$(this).attr(\"" + viewtype[i] + "-" + property[j] + "\") * " + viewtype[i] + "_value" + ");});\n";
     }
