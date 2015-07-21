@@ -42,7 +42,7 @@ or:
 ## EXAMPLE OF INCLUSION OF THE LIBRARY IN A PAGE
 ```html
 <!DOCTYPE HTML>
-<html class="no-vu">
+<html class="no-viewport">
 <head>
 	<title>Viewport Test</title>
 	<link rel="stylesheet" href="./css/viewport.min.css">
