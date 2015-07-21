@@ -25,8 +25,8 @@ $(window).ready(function() {
         return;
       }
       var html = $("html");
-      html.removeClass("no-vu");
-      html.css('overflow', 'hidden');
+      html.removeClass("no-viewport");
+      html.addClass("vu-overflow");
       var vh_test = $("<div class='vh-test'></div>").appendTo(html);
       var vh_calc = (vh_test).height() - $(window).height();
       vh_need = (vh_calc >= -1 && vh_calc <= 1) ? false : true;
@@ -151,11 +151,11 @@ $(window).ready(function() {
         window.vmax_border_bottom_width = $("[vmax-border-bottom-width]");
         window.vmax_border_left_width = $("[vmax-border-left-width]");
       }
-      html.css('overflow', 'visible');
+      html.removeClass("vu-overflow");
     }
     function viewport_exec() {
       var html = $("html");
-      html.css('overflow', 'hidden');
+      html.addClass("vu-overflow");
       if(vh_need == true) {
         var vh_value = $(window).height()/100;
         window.vh_height.each(function() {$(this).css("height", $(this).attr("vh-height") * vh_value);});
@@ -268,7 +268,7 @@ $(window).ready(function() {
         window.vmax_border_bottom_width.each(function() {$(this).css("border-bottom-width", $(this).attr("vmax-border-bottom-width") * vmax_value);});
         window.vmax_border_left_width.each(function() {$(this).css("border-left-width", $(this).attr("vmax-border-left-width") * vmax_value);});
       }
-      html.css('overflow', 'visible');
+      html.removeClass("vu-overflow");
     }
     viewport_init();
     viewport_exec();
