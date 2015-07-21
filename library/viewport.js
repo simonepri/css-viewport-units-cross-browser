@@ -15,8 +15,6 @@ $(window).ready(function() {
     var vmax_need = false;
 
     function viewport_init() {
-      var html = $("html");
-      html.removeClass("no-viewport");
       var deviceAgent = navigator.userAgent.toLowerCase();
       var oldIOS = (/ip(ad|hone|od).*os 3_/.test(deviceAgent) || /ip(ad|hone|od).*os 4_/.test(deviceAgent) || /ip(ad|hone|od).*os 5_/.test(deviceAgent) || /ip(ad|hone|od).*os 6_/.test(deviceAgent) || /ip(ad|hone|od).*os 7_/.test(deviceAgent));
       if(oldIOS) {
@@ -26,6 +24,8 @@ $(window).ready(function() {
         vmax_need = true;
         return;
       }
+      var html = $("html");
+      html.removeClass("no-viewport");
       html.addClass("vu-overflow");
       var vh_test = $("<div class='vh-test'></div>").appendTo(html);
       var vh_calc = (vh_test).height() - $(window).height();
