@@ -1,9 +1,9 @@
 /*!
-* Viewport v1.1.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
+* Viewport v1.2.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
 ** Copyright 2015 Simone Primarosa. (https://github.com/simone97/)
 * Licensed under GNU General Public License version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
 */
-/*! viewport-generator.cpp v1.1.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/generator/viewport-generator.cpp */
+/*! viewport-generator.cpp v1.2.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/generator/viewport-generator.cpp */
 
 #include <fstream>
 #include <string>
@@ -17,7 +17,7 @@ const string PROFILE = "https://github.com/simone97/";
 const string REPO = PROFILE + "css-viewport-units-cross-browser/";
 const string FOLDER = REPO + "library/";
 const string FILENAME = "viewport";
-const string VERSION = "1.1.0";
+const string VERSION = "1.2.0";
 
 vector<string> list_name = {
   "25",
@@ -192,7 +192,7 @@ int main() {
   tobeprinted += "      var oldIOS = (/ip(ad|hone|od).*os 3_/.test(deviceAgent) || /ip(ad|hone|od).*os 4_/.test(deviceAgent) || /ip(ad|hone|od).*os 5_/.test(deviceAgent) || /ip(ad|hone|od).*os 6_/.test(deviceAgent) || /ip(ad|hone|od).*os 7_/.test(deviceAgent));\n";
   tobeprinted += "      if(oldIOS) {\n";
 	for(vector<string>::iterator vt = viewtype.begin(); vt != viewtype.end(); vt++) {
-    tobeprinted += "        " + *vt + "_" + "need = true;\n";
+    tobeprinted += "        " + *vt + "_" + "need = false;\n";
   }
 	tobeprinted += "        return;\n";
 	tobeprinted += "      }\n";

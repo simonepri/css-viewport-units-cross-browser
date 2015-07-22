@@ -1,9 +1,9 @@
 /*!
-* Viewport v1.1.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
+* Viewport v1.2.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
 * Copyright 2015 Simone Primarosa. (https://github.com/simone97/)
 * Licensed under GNU General Public License version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
 */
-/*! viewport-vh-height.js v1.1.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/library/viewport-vh-height.js */
+/*! viewport-vh-height.js v1.2.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/library/viewport-vh-height.js */
 
 (function($) {
 "use strict";
@@ -15,7 +15,7 @@ $(window).ready(function() {
       var deviceAgent = navigator.userAgent.toLowerCase();
       var oldIOS = (/ip(ad|hone|od).*os 3_/.test(deviceAgent) || /ip(ad|hone|od).*os 4_/.test(deviceAgent) || /ip(ad|hone|od).*os 5_/.test(deviceAgent) || /ip(ad|hone|od).*os 6_/.test(deviceAgent) || /ip(ad|hone|od).*os 7_/.test(deviceAgent));
       if(oldIOS) {
-        vh_need = true;
+        vh_need = false;
         return;
       }
       var html = $("html");

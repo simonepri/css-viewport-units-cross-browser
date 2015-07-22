@@ -1,9 +1,9 @@
 /*!
-* Viewport v1.1.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
+* Viewport v1.2.0 (https://github.com/simone97/css-viewport-units-cross-browser/)
 * Copyright 2015 Simone Primarosa. (https://github.com/simone97/)
 * Licensed under GNU General Public License version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
 */
-/*! viewport.css v1.1.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/library/viewport.css */
+/*! viewport.css v1.2.0 | GNU GPL | https://github.com/simone97/css-viewport-units-cross-browser/library/viewport.css */
 
 .vh-test, .vw-test, .vmin-test, .vmax-test {position:fixed;z-index:-999999;height:1px; width:1px; overflow:hidden;}
 .vh-test {height: 100vh;} .vw-test {height: 100vw;} .vmin-test {height: 100vmin;} .vmax-test {height: 100vmax;}
